@@ -34,6 +34,7 @@ import {
 } from './reservation/reservation.service'
 import { ICheckOutRepository, CheckOutRepository } from './checkOut/checkOut.repository'
 import { ICheckOutService, CheckOutService } from './checkOut/checkOut.service'
+import { DoorLockCodeService } from './door/door.service';
 export interface AllDependencies {
     config: Config
     initializeDatabase: InitializeDatabase
@@ -51,6 +52,7 @@ export interface AllDependencies {
     checkInService: ICheckInService
     checkOutRespository:ICheckOutRepository
     checkOutService: ICheckOutService
+    doorlockCodeService: DoorLockCodeService
 }
 
 type RegisterDeps<T> = {
@@ -75,7 +77,8 @@ const dependencies: RegisterDeps<AllDependencies> = {
     checkInRepository: asClass(CheckInRepository),
     checkInService: asClass(CheckInService),
     checkOutRespository: asClass(CheckOutRepository),
-    checkOutService: asClass(CheckOutService)
+    checkOutService: asClass(CheckOutService),
+    doorlockCodeService: asClass(DoorLockCodeService)
 }
 
 DIContainer.register(dependencies)
